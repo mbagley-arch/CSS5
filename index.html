@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Reflection & Sandbox</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --bg-gray: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #1e293b;
+      --border: #e2e8f0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background-color: var(--bg-gray);
+      margin: 0;
+      padding: 24px 16px;
+    }
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      padding: 32px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      border: 1px solid var(--border);
+    }
+    .nav-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #f1f5f9;
+      padding: 10px 14px;
+      border-radius: 8px;
+      margin-bottom: 24px;
+      border: 1px solid var(--border);
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .nav-link {
+      text-decoration: none;
+      color: var(--primary);
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 6px;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+    .nav-link:hover {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+    .nav-link.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+      pointer-events: none;
+    }
+    h1 {
+      margin-top: 0;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 12px;
+      color: #0f172a;
+    }
+    h2 {
+      color: var(--primary);
+      margin-top: 28px;
+    }
+    .q-card {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      padding: 16px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+    .q-card label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 8px;
+      color: #0f172a;
+    }
+    textarea {
+      width: 100%;
+      height: 90px;
+      padding: 10px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      box-sizing: border-box;
+    }
+    .sandbox-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 16px;
+    }
+    @media (max-width: 650px) { .sandbox-grid { grid-template-columns: 1fr; } }
+    .editor-box, .preview-box {
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 12px;
+      background: #ffffff;
+    }
+    .editor-box textarea {
+      height: 160px;
+      font-family: monospace;
+      background: #0f172a;
+      color: #f8fafc;
+    }
+    iframe {
+      width: 100%;
+      height: 160px;
+      border: 1px dashed #cbd5e1;
+      border-radius: 4px;
+      background: white;
+    }
+    .slider-group {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    .slider-control {
+      flex: 1;
+      min-width: 140px;
+    }
+    .box-demo-outer {
+      background: #fee2e2;
+      padding: 20px;
+      border: 2px dashed #fca5a5;
+      text-align: center;
+      border-radius: 8px;
+    }
+    .box-demo-border {
+      background: #fef3c7;
+      border: 4px solid #fcd34d;
+      transition: all 0.2s;
+    }
+    .box-demo-padding {
+      background: #dcfce7;
+      transition: all 0.2s;
+    }
+    .box-demo-content {
+      background: #dbeafe;
+      padding: 10px;
+      font-weight: bold;
+      color: #1e40af;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <nav class="nav-bar">
+    <a class="nav-link" href="page1_content.html">&larr; Page 1: Reading</a>
+    <a class="nav-link" href="page2_guided_notes.html">&larr; Page 2: Guided Notes</a>
+    <span class="nav-link active">Page 3: Sandbox</span>
+  </nav>
+
+  <h1>Reflection & Hands-On Practice</h1>
+
+  <h2>Section 1: Reflection Questions</h2>
+  
+  <div class="q-card">
+    <label>1. Comparing CSS Implementation Methods:</label>
+    <p>Explain why using an external stylesheet is considered "best coding practice" for web development compared to inline or internal styling. In what scenario might an inline style still be useful?</p>
+    <textarea placeholder="Type your answer here..."></textarea>
+  </div>
+
+  <div class="q-card">
+    <label>2. Analyzing the CSS Box Model:</label>
+    <p>If you want to increase space INSIDE a box around text, which property do you adjust? Which property creates space OUTSIDE between boxes?</p>
+    <textarea placeholder="Type your answer here..."></textarea>
+  </div>
+
+  <div class="q-card">
+    <label>3. CSS Syntax Breakdown:</label>
+    <p>Write out a complete CSS style rule setting all <code>h1</code> headings to background-color yellow. Identify the selector, property, and value in your answer.</p>
+    <textarea placeholder="Type your answer here..."></textarea>
+  </div>
+
+  <h2>Section 2: Interactive Box Model Simulator</h2>
+  <p>Adjust the sliders below to see how Padding and Margin dynamically resize the HTML box element in real time!</p>
+  
+  <div class="slider-group">
+    <div class="slider-control">
+      <label>Padding: <span id="pad-val">20</span>px</label>
+      <input type="range" id="pad-slider" min="0" max="50" value="20" oninput="updateBox()">
+    </div>
+    <div class="slider-control">
+      <label>Margin: <span id="mar-val">20</span>px</label>
+      <input type="range" id="mar-slider" min="0" max="50" value="20" oninput="updateBox()">
+    </div>
+  </div>
+
+  <div class="box-demo-outer" id="demo-margin">
+    <div style="font-size: 0.8rem; color: #991b1b; font-weight: bold;">MARGIN</div>
+    <div class="box-demo-border" id="demo-border">
+      <div style="font-size: 0.8rem; color: #92400e; font-weight: bold;">BORDER</div>
+      <div class="box-demo-padding" id="demo-padding">
+        <div style="font-size: 0.8rem; color: #166534; font-weight: bold;">PADDING</div>
+        <div class="box-demo-content">CONTENT AREA</div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Section 3: Live CSS Sandbox</h2>
+  <p>Test your CSS skills directly! Type CSS code below to style the HTML heading and paragraph live.</p>
+
+  <div class="sandbox-grid">
+    <div class="editor-box">
+      <strong>CSS Code Editor:</strong>
+      <textarea id="css-code" oninput="updateSandbox()">h1 {
+  color: #2563eb;
+  text-align: center;
+}
+p {
+  background-color: #fef3c7;
+  padding: 10px;
+}</textarea>
+    </div>
+    <div class="preview-box">
+      <strong>Live Web Output:</strong>
+      <iframe id="sandbox-preview"></iframe>
+    </div>
+  </div>
+
+  <nav class="nav-bar" style="margin-top: 32px; margin-bottom: 0;">
+    <a class="nav-link" href="page2_guided_notes.html">&larr; Back: Page 2 (Guided Notes)</a>
+    <div></div>
+  </nav>
+</div>
+
+<script>
+  function updateBox() {
+    const pad = document.getElementById('pad-slider').value;
+    const mar = document.getElementById('mar-slider').value;
+    
+    document.getElementById('pad-val').innerText = pad;
+    document.getElementById('mar-val').innerText = mar;
+
+    document.getElementById('demo-padding').style.padding = pad + 'px';
+    document.getElementById('demo-margin').style.padding = mar + 'px';
+  }
+
+  function updateSandbox() {
+    const css = document.getElementById('css-code').value;
+    const html = `<html><head><style>${css}</style></head><body><h1>Hello CSS!</h1><p>This is live styled text.</p></body></html>`;
+    const iframe = document.getElementById('sandbox-preview');
+    iframe.contentWindow.document.open();
+    iframe.contentWindow.document.write(html);
+    iframe.contentWindow.document.close();
+  }
+
+  window.onload = function() {
+    updateBox();
+    updateSandbox();
+  };
+</script>
+
+</body>
+</html>
